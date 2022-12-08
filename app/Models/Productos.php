@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Productos extends Model
 {
+
     use HasFactory;
+    public $timestamps = false;
     protected $table = 'tb_productos';
     protected $primaryKey = 'id_producto';
     protected $fillable = [
@@ -15,6 +17,7 @@ class Productos extends Model
         'nombre',
         'cantidad',
         'costo',
+        'foto',
         'id_tipo',
         'id_tienda',
       

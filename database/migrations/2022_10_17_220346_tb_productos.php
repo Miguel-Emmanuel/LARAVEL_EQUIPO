@@ -19,9 +19,11 @@ class TbProductos extends Migration
             $table->string('clave', 30);
             $table->string('nombre', 50);
             $table->string('cantidad');
+            $table->text('foto')->nullable();
             $table->decimal('costo');
             $table->string('id_tipo');
             $table->string('id_tienda');
+         /*    $table->timestamps(); */
            
 
 

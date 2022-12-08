@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,32 +6,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<header id="nav">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-      <a class="nav-link " href="{{route('lista_productos') }}">PRODUCTOS     </a>
-      </li>
-      <li></li>
-      <li class="nav-item">
-      <a class="nav-link " href="{{route('alta_usuarios') }}" tabindex="-1" aria-disabled="true">CREAR UN NUEVO USUARIO</a>
-
-      </li>
-    
-    </ul>
-  </div>
-</nav>
-</header>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    @include('bares')
     <table class="table table-striped table-hover">  <thead>
     <tr>
       <th scope="col" style="color: #591C68">ID</th>

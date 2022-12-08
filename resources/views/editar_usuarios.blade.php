@@ -1,5 +1,7 @@
+@include('bares')
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,10 +45,16 @@
     <hr>
 
     
-<div class="input-group">
-<span class="input-group-text" style="margin-left: 60px"> NOMBRE:</span>
-<input type="text" aria-label="First name" value="{{ $usuarios -> nombre }}" class="form-control" name="nombre" style="margin-right: 20px">
-</div>
+
+
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+  <input type="hidden" aria-label="First name" value="{{ $usuarios -> nombre }}" class="form-control" name="nombre" style="margin-right: 20px">
+
+    <label class="input-group-text" for="inputGroupSelect01">{{ $usuarios -> nombre }}</label>
+  </div>
+
 <div class="input-group">
   <span class="input-group-text" style="margin-left: 60px">APELLIDO  MATERNO</span>
   <input type="text" aria-label="First name" class="form-control" name="ap" value="{{ $usuarios -> ap }}">
@@ -61,10 +69,10 @@ EDAD</span>
  <input type="text" name="fn" value="{{ $usuarios -> edad }}"></div>
  <div  class="input-group"><div id="cma">
  <button type="button" class="btn btn-warning"> 
-    <input type="radio" name="gen" value="Femenino"  {{ $usuarios->genero == "Femenino"?'cheked':''; }}> Femenino   <br></button>
+    <input type="radio" name="gen" value="Femenino"  {{ $usuarios->genero == "Femenino"?'checked':''; }}> Femenino   <br></button>
 
 <button type="button" class="btn btn-secondary" >
-<input type="radio" name="gen"  value="Masculino"  {{ $usuarios -> genero == "Masculino"?'cheked':''; }}> Masculino <br></button>
+<input type="radio" name="gen"  value="Masculino"  {{ $usuarios -> genero == "Masculino"?'checked':''; }}> Masculino <br></button>
 </div>
 </div>     
 <input type="file" name="foto" id=""value="{{ $usuarios -> foto }}">

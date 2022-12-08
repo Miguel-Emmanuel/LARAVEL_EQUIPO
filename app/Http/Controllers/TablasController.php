@@ -43,6 +43,7 @@ return view("editar_usuarios")
 ->with(['nivel' => $tipo]);
 }
 
+
 public function alta_usuarios(){
     $tipo = Tipos::all();
     return view("alta_usuarios")
@@ -104,5 +105,148 @@ public function productos()
     -> with(['productos1' => $produc_a])
     -> with(['productos2' => $produc_b]);
 }
+
+public function editar_productos(Productos $id){
+
+    $tipo = Tipos::all();
+return view("editar_productos")
+->with(['usuarios' => $id]) 
+->with(['nivel' => $tipo]);
+}
+public function salvar_productos(Productos $id, Request $request){
+    $foto2 =  $request ->foto;
+    $query = Productos::find($id->id_producto);
+    $query->clave = trim(  $request->clave);
+    $query->nombre = trim(  $request->nombre);
+    $iniciales =  $query->cantidad ;
+
+    if(isset($request->insumos)){
+        $insumo =  $request->insumos;
+        $real = $iniciales  -  $insumo;
+    }
+    elseif(isset($request->ingresos)){
+        $ingreso =  $request->ingresos;
+        $real = $iniciales  +  $ingreso;
+    }
+
+    $query->cantidad = $real;
+    $query->nombre = trim(  $request->nombre);
+    $query->foto = $foto2;
+   
+    $query->save();
+    return redirect()->route("editar_productos", ['id' => $id->id_producto]);
+
+}
+public function borrar_productos(Productos $id){
+
+    \Storage::disk('local')->delete($id->foto);//bay foto del usuario
+   $id->delete();
+   return redirect()->route("lista_productos");
+
+}
+public function detalle_productos($id){
+    $usuario = Productos::find($id);
+    return view("detalle_productos")
+    ->with(['detalle_productos' => $usuario]);
+}
 }
 
+
+/*
+<!--    @foreach($productos1 as $producto)
+   <?php     if ($producto -> nombre = "Salsa Verde"){
+?>
+@if($producto -> cantidad  < 10)
+ 
+<div class="alert alert-danger" role="alert">
+<i>HAY POCOS RECURSOS
+{{$producto -> nombre }}
+</i>
+</div>
+@endif
+<?php
+   } ?>
+
+
+<?php     if ($producto -> nombre = "Salsa roja"){
+?>
+@if($producto -> cantidad  < 10)
+ 
+<div class="alert alert-danger" role="alert">
+<i>HAY POCOS RECURSOS
+{{$producto -> nombre }}
+</i>
+</div>
+@endif
+<?php
+   } ?>
+
+
+
+
+<?php     if ($producto -> nombre = "Totopos"){
+?>
+@if($producto -> cantidad  < 10)
+ 
+<div class="alert alert-danger" role="alert">
+<i>HAY POCOS RECURSOS
+{{$producto -> nombre }}
+</i>
+</div>
+@endif
+<?php
+   } ?>
+
+
+
+
+<?php     if ($producto -> nombre = "tortillas"){
+?>
+@if($producto -> cantidad  < 10)
+ 
+<div class="alert alert-danger" role="alert">
+<i>HAY POCOS RECURSOS
+{{$producto -> nombre }}
+</i>
+</div>
+@endif
+<?php
+   } ?>
+
+
+
+
+<?php     if ($producto -> nombre = "masa"){
+?>
+@if($producto -> cantidad  < 10)
+ 
+<div class="alert alert-danger" role="alert">
+<i>HAY POCOS RECURSOS
+{{$producto -> nombre }}
+</i>
+</div>
+@endif
+<?php
+   } ?>
+
+<?php     if ($producto -> nombre = "maiz"){
+?>
+@if($producto -> cantidad  < 10)
+ 
+<div class="alert alert-danger" role="alert">
+<i>HAY POCOS RECURSOS
+{{$producto -> nombre }}
+</i>
+</div>
+<?php
+@endif
+   } ?>
+
+  
+
+   @endforeach
+    -->
+
+
+
+*/
